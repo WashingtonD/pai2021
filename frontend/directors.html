@@ -1,0 +1,12 @@
+<table class="table table-stripped table-hover">
+    <tr>
+        <th>Login Kierownika</th>
+        <th>Role Kierownika</th>
+    </tr>
+
+    <tr ng-repeat="user in ctrl.users" ng-click="ctrl.edit($index)">
+         <td ng-bind="user.login"></td>
+         <td ng-bind="user.roles"></td>
+
+    </tr>
+</table>

@@ -1,0 +1,20 @@
+<table class="table table-stripped table-hover">
+    <tr>
+        <th>Nazwa umowy</th>
+        <th>Wykonawca</th>
+        <th>Projekt</th>
+        <th>Data rozpoczęcia</th>
+        <th>Data końca</th>
+        <th>Wynagrodzenie</th>
+        <th>Data rozliczenia</th>
+    </tr>
+    <tr ng-repeat="contract in ctrl.contracts">
+        <td ng-bind="contract.name"></td>
+        <td ng-repeat="person in ctrl.persons | filter:contract.id_execute" ng-bind="person.firstName+' '+person.lastName"></td>
+        <td ng-repeat="project in ctrl.projects | filter:contract.id_project" ng-bind="project.name"></td>
+        <td ng-bind="contract.date_start | date:'dd/MM/yyyy'"></td>
+        <td ng-bind="contract.date_end | date:'dd/MM/yyyy' "></td>
+        <td ng-bind="contract.reward"></td>
+        <td ng-bind="contract.commitDate | date:'dd/MM/yyyy'"></td>
+    </tr>
+</table>

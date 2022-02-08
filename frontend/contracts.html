@@ -1,0 +1,37 @@
+<!--<div style="float: right">
+    <form class="form form-inline">
+        <select id="user" class="form-control" ng-model="ctrl.q" ng-change="ctrl.refreshData()" >
+            <option> Wszystkie Wykonawcy</option>
+            <option ng-repeat="person in ctrl.persons" value="{{perosn._id}}" ng-bind="person.firstName +' ' + person.lastName"></option>
+        </select>
+       <input class="form-control" type="text" placeholder="filtr" ng-model="ctrl.q" ng-change="ctrl.refreshData()"/>
+    </form>
+</div>
+
+<div><br/><br/></div>-->
+
+<table class="table table-stripped table-hover">
+    <tr>
+        <td>
+            <button class="btn btn-default btn-xs fa fa-plus" ng-click="ctrl.edit(-1)"></button>
+        </td>
+        <th>Nazwa umowy</th>
+        <th>Wykonawca</th>
+        <th>Projekt</th>
+        <th>Data rozpoczęcia</th>
+        <th>Data końca</th>
+        <th>Wynagrodzenie</th>
+    </tr>
+    <tr ng-repeat="contract in ctrl.contracts" ng-click="ctrl.edit($index)">
+        <td>
+          <!--  <button class="btn btn-warning fa fa-times"></button> -->
+        </td>
+        <td ng-bind="contract.name"></td>
+        <td ng-repeat="person in ctrl.persons | filter:contract.id_execute" ng-bind="person.firstName+' '+person.lastName"></td>
+         <!--td ng-bind="project.director"></td> -->
+        <td ng-repeat="project in ctrl.projects | filter:contract.id_project" ng-bind="project.name"></td>
+        <td ng-bind="contract.date_start | date:'dd/MM/yyyy'"></td>
+        <td ng-bind="contract.date_end | date:'dd/MM/yyyy' "></td>
+        <td ng-bind="contract.reward"></td>
+    </tr>
+</table>
